@@ -2,6 +2,7 @@
   "name": "playwright-component-test",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
@@ -13,10 +14,29 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/rtl/?(*.)+(spec|test).+(ts|tsx|js)"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "test-ct": "playwright test -c playwright-ct.config.ts"
   },
@@ -39,9 +59,16 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.7",
     "@playwright/experimental-ct-react": "^1.40.1",
     "@playwright/test": "^1.40.1",
     "@testing-library/react": "^14.1.2",
-    "@types/node": "^20.10.5"
+    "@types/jest": "^29.5.11",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.10.5",
+    "babel-jest": "^29.7.0",
+    "jest": "^27.5.1",
+    "ts-jest": "^29.1.1"
   }
 }
